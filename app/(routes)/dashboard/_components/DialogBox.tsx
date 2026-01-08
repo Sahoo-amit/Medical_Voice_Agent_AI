@@ -72,7 +72,6 @@ const DialogBox = () => {
 
     return (
         <Dialog>
-            {/* FIX: Added asChild to prevent nested <button> tags */}
             <DialogTrigger asChild>
                 <Button className="mt-3" disabled={!paidUser && historyList?.length >=1}>+ Start a Consultation</Button>
             </DialogTrigger>
@@ -109,7 +108,6 @@ const DialogBox = () => {
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                    {/* FIX: Added asChild here as well */}
                     <DialogClose asChild>
                         <Button variant={'outline'}>Cancel</Button>
                     </DialogClose>

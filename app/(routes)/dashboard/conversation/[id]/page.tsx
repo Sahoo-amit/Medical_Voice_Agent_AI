@@ -200,7 +200,7 @@ const MedicalVoiceAgent = () => {
   const [role, setRole] = useState<string | null>()
   const [liveTranscript, setLiveTranscript] = useState<string>("")
   const [messages, setMessages] = useState<message[]>([])
-  
+
   // Timer State
   const [timer, setTimer] = useState(0)
 
@@ -305,6 +305,18 @@ const MedicalVoiceAgent = () => {
   }
 
   return (
+    <>
+      {isEnding && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="flex flex-col items-center gap-4 bg-background p-6 rounded-2xl shadow-xl">
+            <Loader2 className="h-10 w-10 animate-spin text-primary" />
+            <p className="text-sm font-medium text-muted-foreground">
+              Generating your medical report...
+            </p>
+          </div>
+        </div>
+      )}
+
     <div className='p-4 mt-4 border rounded-3xl bg-secondary shadow-sm'>
       <div className='flex justify-between items-center'>
         <h2 className='p-1 px-3 border rounded-full bg-background flex gap-2 items-center text-sm font-medium'>
@@ -350,26 +362,38 @@ const MedicalVoiceAgent = () => {
 
           {callStarted ? (
             <Button
-              className='mt-12 w-full max-w-[200px] h-12 rounded-full shadow-lg transition-all hover:scale-105'
-              variant={'destructive'}
+              className="mt-12 w-full max-w-[200px] h-12 rounded-full shadow-lg transition-all hover:scale-105"
+              variant="destructive"
               onClick={endCall}
               disabled={isEnding}
             >
-              {isEnding ? <Loader2 className="animate-spin mr-2" /> : <PhoneOff className="mr-2 h-5 w-5" />}
-              {isEnding ? 'Generating Report...' : 'End Call'}
+              {isEnding ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Ending...
+                </>
+              ) : (
+                <>
+                  <PhoneOff className="mr-2 h-5 w-5" />
+                  End Call
+                </>
+              )}
             </Button>
           ) : (
             <Button
-              className='mt-12 w-full max-w-[200px] h-12 rounded-full shadow-lg transition-all hover:scale-105 bg-lime-600 hover:bg-lime-700'
+              className="mt-12 w-full max-w-[200px] h-12 rounded-full shadow-lg transition-all hover:scale-105 bg-lime-600 hover:bg-lime-700"
               onClick={startCall}
               disabled={loading}
             >
-              <PhoneCall className="mr-2 h-5 w-5" /> Start Consultation
+              <PhoneCall className="mr-2 h-5 w-5" />
+              Start Consultation
             </Button>
           )}
+
         </div>
       )}
     </div>
+    </>
   )
 }
 

@@ -34,8 +34,6 @@ export function ReportDialog({ item }: props) {
                     </DialogTitle>
                     <DialogDescription asChild>
                         <div className="text-slate-700 space-y-6 pt-4">
-
-                            {/* SESSION INFO SECTION */}
                             <section className="bg-blue-50/50 p-4 rounded-xl border border-blue-100">
                                 <h3 className="font-bold text-blue-700 text-sm uppercase tracking-wider flex items-center gap-2 mb-3">
                                     <FileText className="h-4 w-4" /> Session Information
@@ -59,24 +57,18 @@ export function ReportDialog({ item }: props) {
                                     </p>
                                 </div>
                             </section>
-
-                            {/* CHIEF COMPLAINT */}
                             <section>
                                 <h3 className="font-bold text-blue-600 text-lg border-l-4 border-blue-500 pl-3 mb-2">Chief Complaint</h3>
                                 <p className="text-slate-600 bg-slate-50 p-3 rounded-lg border italic">
                                     "{item.report?.chiefComplaint || "No complaint recorded."}"
                                 </p>
                             </section>
-
-                            {/* SUMMARY */}
                             <section>
                                 <h3 className="font-bold text-blue-600 text-lg border-l-4 border-blue-500 pl-3 mb-2">Clinical Summary</h3>
                                 <p className="leading-relaxed text-slate-600 text-sm">
                                     {item.report?.summary || "Summary generation pending..."}
                                 </p>
                             </section>
-
-                            {/* SYMPTOMS & SEVERITY GRID */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <section>
                                     <h3 className="font-bold text-blue-600 border-l-4 border-blue-500 pl-3 mb-2 text-sm uppercase tracking-wide">Symptoms</h3>
@@ -106,8 +98,6 @@ export function ReportDialog({ item }: props) {
                                     </div>
                                 </section>
                             </div>
-
-                            {/* MEDICATIONS & RECOMMENDATIONS GRID */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <section className="bg-slate-50 p-4 rounded-xl border border-dashed">
                                     <h3 className="font-bold text-emerald-700 text-md flex items-center gap-2 mb-3">
